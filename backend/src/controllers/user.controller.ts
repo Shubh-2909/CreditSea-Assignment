@@ -89,6 +89,9 @@ export const verifyOTP = async (req: any, res: any, next: any) => {
 
     const token = user.generateAuthToken();
 
+    // Set Authorization header with the token
+    res.set("Authorization", `Bearer ${token}`);
+
     res.status(200).json({
       message: "Email verified successfully",
       token,
@@ -163,6 +166,7 @@ export const loginUser = async (req: any, res: any, next: any) => {
   }
 
   const token = user.generateAuthToken();
+  res.set("Authorization", `Bearer ${token}`);
 
   return res.status(200).json({ token, user });
 };
