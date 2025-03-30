@@ -53,8 +53,7 @@ function Form() {
 
     try {
       // Retrieve the token from local storage or any other secure storage
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U4ZWMzMjdmZTA4MzFhMzU4MGQ2MzQiLCJpYXQiOjE3NDMzMTgxNjF9.a-QKN-bou_2KDCZiCechMnzwvEm5JKleUmAzuFJxobE"; // Adjust this line based on where you store your token
+      const token = localStorage.getItem("token"); // Adjust this line based on where you store your token
 
       const response = await axios.post(
         "http://localhost:4000/application/applications",
@@ -67,7 +66,7 @@ function Form() {
       );
 
       console.log(response);
-      //   alert("Application submitted successfully");
+      alert("Application submitted successfully");
       window.location.reload();
     } catch (e) {
       alert("Fill the form according to the instructions");

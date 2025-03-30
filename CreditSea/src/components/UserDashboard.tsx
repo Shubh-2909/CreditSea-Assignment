@@ -8,6 +8,7 @@ import Close from "../assets/close.png";
 import Navbar from "./Navbar";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 export type ApplicationContent = {
   fullName: string;
@@ -23,12 +24,14 @@ export type ResponseData = {
 function UserDashboard() {
   const [form, setForm] = useState<boolean>(false);
   const [loanData, setLoanData] = useState<LoanDetails[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleData = async () => {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U4ZWMzMjdmZTA4MzFhMzU4MGQ2MzQiLCJpYXQiOjE3NDMzMTgxNjF9.a-QKN-bou_2KDCZiCechMnzwvEm5JKleUmAzuFJxobE"; // Adjust this line based on where you store your token
-
+      const token = localStorage.getItem("token"); // Adjust this line based on where you store your token
+      if (!token) {
+        navigate("/login");
+      }
       const response = await axios.get(
         "http://localhost:4000/application/applications",
         {

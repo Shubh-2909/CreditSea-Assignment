@@ -19,13 +19,15 @@ const Login: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:4000/user/login", {
+      const response = await fetch("http://localhost:4000/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
+
+      console.log(response);
 
       // Check if response is ok before parsing JSON
       if (!response.ok) {

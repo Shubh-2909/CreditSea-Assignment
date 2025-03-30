@@ -31,6 +31,8 @@ import { useEffect, useState } from "react";
 // import { ResponseData } from "./UserDashboard";
 import axios from "axios";
 import { columns, LoanDetails, Status } from "../utils/columns";
+import { useNavigate } from "react-router-dom";
+import AdminManagement from "./AdminManagement";
 
 export type ApplicationContent = {
   fullName: string;
@@ -49,12 +51,14 @@ function AdminDashboard() {
   const [selectedRecord, setSelectedRecord] = useState<LoanDetails | null>(
     null
   );
+  const navigate = useNavigate();
   const state = false;
   useEffect(() => {
     const handleData = async () => {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U5MDBlYzdmZTA4MzFhMzU4MGQ2ZmUiLCJpYXQiOjE3NDMzMjM1ODB9.WaLhKU3yir03HcnMjXjCnEcxNLPt3BpP718Iov_B0fI"; // Adjust this line based on where you store your token
-
+      const token = localStorage.getItem("token");
+      if (!token) {
+        navigate("/login");
+      }
       const response = await axios.get(
         "http://localhost:4000/application/applications",
         {
