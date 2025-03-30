@@ -46,7 +46,7 @@ const AdminManagement = () => {
 
       // Fetch admins
       const adminsRes = await axios.get<{ admins: User[] }>(
-        "http://localhost:4000/application/admins",
+        `${import.meta.env.VITE_BACKEND_URL}/application/admins`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -55,7 +55,7 @@ const AdminManagement = () => {
 
       // Fetch verifiers
       const verifiersRes = await axios.get(
-        "http://localhost:4000/application/verifiers",
+        `${import.meta.env.VITE_BACKEND_URL}/application/verifiers`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -64,7 +64,7 @@ const AdminManagement = () => {
 
       // Fetch regular users (for dropdown)
       const usersRes = await axios.get(
-        "http://localhost:4000/application/admins",
+        `${import.meta.env.VITE_BACKEND_URL}/application/admins`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -87,7 +87,7 @@ const AdminManagement = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:4000/application/admins",
+        `${import.meta.env.VITE_BACKEND_URL}/application/admins`,
         { email },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -104,9 +104,12 @@ const AdminManagement = () => {
   const handleRemoveAdmin = async (id: string) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:4000/application/admins/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `${import.meta.env.VITE_BACKEND_URL}/application/admins/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       message.success("Admin removed successfully");
       fetchData();
     } catch (error) {
@@ -121,7 +124,7 @@ const AdminManagement = () => {
       if (!user) return;
 
       await axios.post(
-        "http://localhost:4000/application/verifiers",
+        `${import.meta.env.VITE_BACKEND_URL}/application/verifiers`,
         { email: user.email, action },
         { headers: { Authorization: `Bearer ${token}` } }
       );

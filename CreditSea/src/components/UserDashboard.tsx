@@ -33,7 +33,7 @@ function UserDashboard() {
         navigate("/login");
       }
       const response = await axios.get(
-        "http://localhost:4000/application/applications",
+        `${import.meta.env.VITE_BACKEND_URL}/application/applications`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Include the token in the headers

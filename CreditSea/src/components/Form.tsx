@@ -56,7 +56,7 @@ function Form() {
       const token = localStorage.getItem("token"); // Adjust this line based on where you store your token
 
       const response = await axios.post(
-        "http://localhost:4000/application/applications",
+        `${import.meta.env.VITE_BACKEND_URL}/application/applications`,
         applicationData,
         {
           headers: {

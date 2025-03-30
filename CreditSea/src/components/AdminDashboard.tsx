@@ -60,7 +60,7 @@ function AdminDashboard() {
         navigate("/login");
       }
       const response = await axios.get(
-        "http://localhost:4000/application/applications",
+        `${import.meta.env.VITE_BACKEND_URL}/application/applications`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Include the token in the headers
@@ -102,7 +102,9 @@ function AdminDashboard() {
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U5MDBlYzdmZTA4MzFhMzU4MGQ2ZmUiLCJpYXQiOjE3NDMzMjM1ODB9.WaLhKU3yir03HcnMjXjCnEcxNLPt3BpP718Iov_B0fI";
 
       const { data } = await axios.patch(
-        `http://localhost:4000/application/applications/${selectedRecord.key}/status`,
+        `${import.meta.env.VITE_BACKEND_URL}/application/applications/${
+          selectedRecord.key
+        }/status`,
         { status: "approved" },
         {
           headers: {
@@ -127,7 +129,9 @@ function AdminDashboard() {
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2U5MDBlYzdmZTA4MzFhMzU4MGQ2ZmUiLCJpYXQiOjE3NDMzMjM1ODB9.WaLhKU3yir03HcnMjXjCnEcxNLPt3BpP718Iov_B0fI";
       const { data } = await axios.patch(
-        `http://localhost:4000/application/applications/${selectedRecord.key}/status`,
+        `${import.meta.env.VITE_BACKEND_URL}/application/applications/${
+          selectedRecord.key
+        }/status`,
         { status: "rejected" },
         {
           headers: {

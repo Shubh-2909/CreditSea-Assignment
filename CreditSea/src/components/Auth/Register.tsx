@@ -18,13 +18,16 @@ const OTPVerification = ({ userId }: { userId: string }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:4000/users/verify-otp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId, otp }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/users/verify-otp`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId, otp }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -77,13 +80,16 @@ const OTPVerification = ({ userId }: { userId: string }) => {
     setResendLoading(true);
 
     try {
-      const response = await fetch("http://localhost:4000/users/resend-otp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/users/resend-otp`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -222,18 +228,21 @@ const Register: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:4000/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          email: formData.email,
-          password: formData.password,
-          role: formData.role,
-        }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/users/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fullName: formData.fullName,
+            email: formData.email,
+            password: formData.password,
+            role: formData.role,
+          }),
+        }
+      );
       console.log(response);
 
       // Check if response is ok before trying to parse JSON
