@@ -31,8 +31,8 @@ router.delete(
 );
 
 // Admin management routes
-router.post("/admins", auth, isAdmin, adminController.addAdmin);
-router.delete("/admins/:id", auth, isAdmin, adminController.removeAdmin);
+router.post("/admins", adminController.addAdmin);
+router.delete("/admins/:id", adminController.removeAdmin);
 router.get("/admins", auth, isAdmin, adminController.getAllAdmins);
 
 // Verifier management routes
