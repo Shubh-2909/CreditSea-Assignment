@@ -2,7 +2,7 @@
 
 import axios from "axios";
 
-const API_URL = "http://localhost:4000/users"; // Replace with your actual API URL
+const API_URL = "http://localhost:4000/users";
 
 export const registerUser = async (userData: {
   fullName: string;

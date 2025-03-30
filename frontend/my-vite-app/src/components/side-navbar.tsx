@@ -1,5 +1,4 @@
 "use client";
-import { useSession } from "next-auth/react";
 import {
   AreaChart,
   FilePen,
@@ -16,14 +15,12 @@ import {
   Wallet,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
-import { User } from "@prisma/client";
 
 const SideNavbar = () => {
   const pathname = usePathname();
-  const router = useRouter();
 
   const links = useMemo(
     () => [
