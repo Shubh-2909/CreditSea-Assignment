@@ -4,6 +4,7 @@ const { validationResult } = require("express-validator");
 import { sendOTPEmail } from "../services/email.service";
 
 export const registerUser = async (req: any, res: any, next: any) => {
+  console.log("HIJOJO");
   try {
     console.log(req.body);
     const errors = validationResult(req);
