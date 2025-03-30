@@ -169,6 +169,8 @@ export const applicationController = {
         return;
       }
 
+      console.log(req.body);
+
       if (req.user.role !== "admin") {
         res
           .status(403)
@@ -177,6 +179,7 @@ export const applicationController = {
       }
 
       const { id } = req.params;
+      console.log("id", id);
       const { status } = req.body;
 
       if (status !== "approved" && status !== "rejected") {
@@ -191,6 +194,7 @@ export const applicationController = {
         return;
       }
 
+      console.log(application);
       application.status = status;
       application.reviewedBy = req.user._id;
       await application.save();

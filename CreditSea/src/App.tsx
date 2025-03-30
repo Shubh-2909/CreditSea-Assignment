@@ -1,10 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import UserDashboard from "./components/UserDashboard";
+
 import VerifierDashboard from "./components/VerifierDashboard";
 import AdminDashboard from "./components/AdminDashboard";
 import { Provider } from "react-redux";
 import { store } from "./store.tsx";
 import Home from "./components/Home.tsx";
+import UserDashboard from "./components/UserDashboard.tsx";
 
 function App() {
   return (

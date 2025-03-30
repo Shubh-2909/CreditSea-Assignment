@@ -18,7 +18,7 @@ const OTPVerification = ({ userId }: { userId: string }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3000/users/verify-otp", {
+      const response = await fetch("http://localhost:4000/users/verify-otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,7 +77,7 @@ const OTPVerification = ({ userId }: { userId: string }) => {
     setResendLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3000/users/resend-otp", {
+      const response = await fetch("http://localhost:4000/users/resend-otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -222,7 +222,7 @@ const Register: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3000/users/register", {
+      const response = await fetch("http://localhost:4000/users/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
