@@ -8,15 +8,15 @@ export const adminController = {
   // Add a new admin (admin only)
   addAdmin: async (req: AuthRequest, res: Response): Promise<void> => {
     try {
-      // if (!req.user) {
-      //   res.status(401).json({ message: "Authentication required" });
-      //   return;
-      // }
+      if (!req.user) {
+        res.status(401).json({ message: "Authentication required" });
+        return;
+      }
 
-      // if (req.user.role !== "admin") {
-      //   res.status(403).json({ message: "Only admins can add new admins" });
-      //   return;
-      // }
+      if (req.user.role !== "admin") {
+        res.status(403).json({ message: "Only admins can add new admins" });
+        return;
+      }
 
       const { email, fullName, password } = req.body;
 
@@ -92,15 +92,15 @@ export const adminController = {
   // Remove admin role (admin only)
   removeAdmin: async (req: AuthRequest, res: Response): Promise<void> => {
     try {
-      // if (!req.user) {
-      //   res.status(401).json({ message: "Authentication required" });
-      //   return;
-      // }
+      if (!req.user) {
+        res.status(401).json({ message: "Authentication required" });
+        return;
+      }
 
-      // if (req.user.role !== "admin") {
-      //   res.status(403).json({ message: "Only admins can remove admin roles" });
-      //   return;
-      // }
+      if (req.user.role !== "admin") {
+        res.status(403).json({ message: "Only admins can remove admin roles" });
+        return;
+      }
 
       const { id } = req.params;
       console.log(id);
