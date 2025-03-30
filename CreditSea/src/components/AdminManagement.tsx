@@ -29,6 +29,8 @@ const AdminManagement = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [password, setPassword] = useState("");
   const [selectedUserId, setSelectedUserId] = useState("");
   const [action, setAction] = useState<"add" | "remove">("add");
   const [isAdminModalVisible, setIsAdminModalVisible] = useState(false);
@@ -90,7 +92,7 @@ const AdminManagement = () => {
       const token = localStorage.getItem("token");
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/application/admins`,
-        { email },
+        { email, fullName, password },
         { headers: { Authorization: `Bearer ${token}` } }
       );
       console.log(response);
@@ -279,6 +281,26 @@ const AdminManagement = () => {
               placeholder="Enter user's email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Full Name
+            </label>
+            <Input
+              placeholder="Enter user's full name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Password
+            </label>
+            <Input
+              placeholder="Enter user's password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
         </div>
