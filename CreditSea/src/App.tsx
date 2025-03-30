@@ -10,7 +10,6 @@ import Register from "./components/Auth/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Navbar from "./components/Navbar";
 import AdminManagement from "./components/AdminManagement";
 
 function App() {

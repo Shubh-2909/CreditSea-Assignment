@@ -32,7 +32,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { columns, LoanDetails, Status } from "../utils/columns";
 import { useNavigate } from "react-router-dom";
-import AdminManagement from "./AdminManagement";
 
 export type ApplicationContent = {
   fullName: string;

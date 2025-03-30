@@ -95,7 +95,7 @@ const OTPVerification = ({ userId }: { userId: string }) => {
         const errorData = await response.json();
         throw new Error(errorData.message || "Failed to resend OTP");
       }
-
+      // @ts-ignore
       const data = await response.json();
       toast.success("OTP has been resent to your email!");
     } catch (error) {
